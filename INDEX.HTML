@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sri Indu College of Engineering & Technology | IT Department</title>
+    <style>
+        /* General Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+
+        body {
+            /* Combined background from both originals */
+            background: linear-gradient(135deg, #0f172a, #1e3a8a, #3b82f6);
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow-x: hidden;
+            padding-top: 80px;
+        }
+
+        /* --- Header/Navigation (Home Page Styles) --- */
+        header {
+            width: 100%;
+            padding: 20px 40px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(12px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            z-index: 10;
+        }
+
+        header h1 {
+            font-size: 1.8rem;
+            letter-spacing: 1px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: white;
+            margin: 0 10px;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #facc15;
+        }
+
+        /* --- Home Main Section --- */
+        .center-section {
+            min-height: calc(100vh - 20px);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+            animation: fadeIn 2s ease-in-out;
+            width: 100%;
+        }
+
+        .college-name {
+            font-size: 3rem;
+            font-weight: 700;
+            background: linear-gradient(to right, #38bdf8, #facc15);
+            -webkit-background-clip: text;
+            color: transparent;
+            animation: floatText 4s ease-in-out infinite;
+        }
+
+        .department {
+            font-size: 1.5rem;
+            margin-top: 15px;
+            color: #e0e7ff;
+            letter-spacing: 2px;
+            animation: fadeUp 3s ease-in-out;
+        }
+
+        /* --- UNIVERSAL SECTION STYLING (Transparent Background, Standard Size, INCREASED HEIGHT) --- */
+        .content-section {
+            width: 90%; 
+            max-width: 1200px; /* Increased Width */
+            margin: 60px auto; 
+            padding: 50px 30px; 
+            border-radius: 40px;
+            
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.2);
+            color: white;
+            
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            animation: fadeIn 2s ease;
+            
+            min-height: 700px; /* Increased Height */
+        }
+
+        .content-section:hover {
+            transform: scale(1.01);
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.4);
+        }
+
+        /* --- VISION/MISSION SECTION OVERRIDE (White Background) --- */
+        #events {
+            background: white;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            color: #1e3a8a; 
+            text-align: center;
+            backdrop-filter: none;
+        }
+        
+        #events h3 {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: #1d4ed8; 
+            border-bottom: 2px solid #ccc;
+            padding-bottom: 15px;
+            text-align: center;
+        }
+        
+        #events .vision-mission-container {
+            color: #1e3a8a; 
+            text-align: left; 
+        }
+        
+        #events .vision-mission-container h4 {
+            color: #1e40af; 
+            border-left: 5px solid #facc15;
+        }
+        
+        #events .vision-mission-container ul li {
+            font-size: 1.05rem;
+            color: #333; 
+        }
+        
+        #events .vision-text {
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: #555; 
+            line-height: 1.6;
+        }
+
+
+        /* --- Image/Text Layout Common Styles --- */
+        .image-section {
+            flex: 1 1 350px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .text-section {
+            flex: 2 1 500px;
+            padding: 20px 40px;
+            animation: fadeUp 2.5s ease;
+        }
+
+        /* Styling for Image Left sections */
+        .content-section:not([style*="row-reverse"]) .text-section {
+            text-align: justify;
+        }
+        
+        /* Styling for Image Right sections */
+        .content-section[style*="row-reverse"] .text-section {
+            text-align: right;
+        }
+
+        .content-section h2 {
+            color: #facc15;
+            margin-bottom: 20px;
+        }
+        
+        .content-section[style*="row-reverse"] h2 {
+            text-align: right;
+        }
+        
+        .content-section:not([style*="row-reverse"]) h2 {
+            text-align: left;
+        }
+
+        .content-section p {
+            color: #e0e7ff;
+        }
+        
+        /* Specific text colors for the note */
+        .content-section p[style*="color: #e0e7ff;"] {
+            color: #c7d2fe !important;
+        }
+
+        /* Chairman's image style */
+        #chairman-section .image-section img {
+            width: 280px;
+            height: 280px;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 0 8px 25px rgba(255, 255, 255, 0.3);
+            animation: floatImage 4s ease-in-out infinite;
+        }
+
+        /* Event/Celebration Image Styles */
+        .event-image {
+            width: 100%;
+            height: auto;
+            max-width: 500px;
+            border-radius: 15px;
+            object-fit: contain;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+            animation: none;
+        }
+
+        /* --- Links --- */
+        .chairman-link, .back-btn {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 10px 20px;
+            background: #facc15;
+            color: #1e3a8a;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.3s, transform 0.3s;
+        }
+
+        .chairman-link:hover, .back-btn:hover {
+            background: #fde047;
+            transform: translateY(-3px);
+        }
+
+        /* --- Footer --- */
+        footer {
+            width: 100%;
+            padding: 15px;
+            font-size: 0.9rem;
+            color: #c7d2fe;
+            text-align: center;
+            margin-top: 30px;
+            background: rgba(0, 0, 0, 0.1);
+        }
+
+        /* --- Media Queries --- */
+        @media (max-width: 1050px) {
+            .content-section {
+                width: 90%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header { padding: 20px 10px; }
+            nav a { margin: 0 5px; font-size: 0.8em; }
+            .college-name { font-size: 2rem; }
+            .department { font-size: 1.2rem; }
+            
+            .content-section { 
+                flex-direction: column; 
+                min-height: auto; 
+                width: 95%;
+                padding: 30px 15px;
+            } 
+            
+            .text-section { 
+                padding: 15px 5px; 
+                text-align: center !important;
+            }
+
+            .content-section h2, 
+            .content-section[style*="row-reverse"] h2 { 
+                text-align: center; 
+            }
+            
+            #events .vision-mission-container {
+                text-align: center;
+            }
+
+            #events .vision-mission-container ul {
+                list-style: none;
+                margin-left: 0;
+            }
+
+            .image-section img { 
+                width: 220px; 
+                height: 220px; 
+                border-radius: 15px !important;
+            }
+            .event-image { 
+                max-width: 100%; 
+            }
+
+            body { padding-top: 70px; }
+            .center-section { min-height: calc(100vh - 70px); }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Sri Indu College</h1>
+        <nav>
+            <a href="#top">Home</a>
+            <a href="#chairman-section">Chairman</a>
+            <a href="#events">V&M</a>
+            <a href="#technotsav-section">Tech'sav</a> <a href="#bathukamma-section">B'kamma</a>
+            <a href="#engineers-day-section">Engg Day</a>
+            <a href="#yoga-day-section">Yoga</a>
+            <a href="#graduation-day-section">Graduation</a>
+        </nav>
+    </header>
+
+    <section class="center-section" id="top">
+        <h2 class="college-name">Sri Indu College of Engineering & Technology</h2>
+        <p class="department">Department of Information Technology</p>
+
+        <a href="#chairman-section" class="chairman-link">View Chairman Message</a>
+    </section>
+
+    <section class="content-section" id="chairman-section">
+        <div class="image-section">
+            <img src="https://www.thehighereducationreview.com/rank_list_images/gbe5x300x300-2.jpg" alt="Chairman">
+        </div>
+        <div class="text-section">
+            <h2>Chairman’s Message</h2>
+            <p>
+                It gives me joy unspeakable to affirm that Sri Indu group of institutions, having completed 39 years successfully,
+                has grown into one of the best institutions and one of the leading Groups in Hyderabad, Telangana.
+                Our Institute is an Autonomous Institution under UGC, recognized under 2(f) and 12(B) of UGC Act 1956,
+                approved by the All India Council of Technical Education (AICTE), NBA Accredited, NAAC in pipeline,
+                and an ISO 9001:2000 Certified College. The college is permanently affiliated to JNTUH.
+                The core philosophy centers on nurturing future engineers with strong technical competence, ethical values, and a commitment to societal upliftment.
+                We strive to create an environment where learning is continuous and holistic development is paramount.
+            </p>
+
+            <a href="#events" class="back-btn">View Vision & Mission ↓</a>
+        </div>
+    </section>
+
+    <section class="content-section" id="events" style="text-align: center;">
+        <h3>VISION AND MISSION</h3>
+        <div class="vision-mission-container" style="max-width: 900px;">
+
+            <h4>INSTITUTION VISION</h4>
+            <p class="vision-text">
+                To be a premier Institution in Engineering & Technology and
+                Management with competency, values and social consciousness.
+            </p>
+
+            <h4>INSTITUTION MISSION</h4>
+            <ul>
+                <li>IM1: Provide high quality academic programs, training activities and research facilities.</li>
+                <li>IM2: Promote Continuous Industry-Institute interaction for employability, Entrepreneurship, leadership and research aptitude among stakeholders.</li>
+                <li>IM3: Contribute to the economical and technological development of the region, state and nation.</li>
+            </ul>
+
+            <h4>DEPARTMENT VISION (Information Technology)</h4>
+            <p class="vision-text">
+                To be a recognized knowledge center in the field of Information Technology with self-motivated, employable engineers to society.
+            </p>
+
+            <h4>DEPARTMENT MISSION</h4>
+            <ul>
+                <li>DM1: To offer high quality student centric education in Information Technology. This involves constantly updating the curriculum to meet industry standards and providing access to cutting-edge tools.</li>
+                <li>DM2: To provide a conducive environment towards innovation and skills, fostering a culture of creative problem-solving through various workshops and labs.</li>
+                <li>DM3: To involve in activities that provide social and professional solutions, encouraging students to apply their technical skills to address real-world challenges.</li>
+                <li>DM4: To impart training on emerging technologies namely cloud computing and IoT with involvement of stake holders, ensuring graduates are industry-ready in future-proof domains.</li>
+            </ul>
+        </div>
+
+        <a href="#technotsav-section" class="back-btn" style="margin-top: 30px;">View Technotsav Details ↓</a> </section>
+
+    <section class="content-section" id="technotsav-section"> <div class="image-section">
+            <img src="./imageone.png" alt="Technotsav Event" class="event-image"> </div>
+        <div class="text-section">
+            <h2>TECHNOTSAV 2025</h2> <p>
+                The Technotsav was successfully held on 22.02.2025. This event featured various technical and non-technical competitions, with enthusiastic participation from students both inside and outside the college.
+            </p>
+            <p>
+                The morning session was dedicated to technical events designed to test core engineering skills. The competition included:
+                <br>
+                **1. Resume Roast:** Participants presented their resumes to a judging panel, who offered constructive feedback on formatting, content, and professional presentation. This round prepared students to create impactful resumes for potential employers.
+                <br>
+                **2. Technical Assessment:** Participants faced a series of technical questions relevant to their fields, assessing their knowledge, problem-solving abilities, and critical thinking.
+            </p>
+            <p>
+                The competition culminated in a **Final HR Interview Simulation** round, where participants answered questions about their experiences, strengths, weaknesses, and career aspirations, providing valuable experience for real-world placement drives.
+            </p>
+            <p style="font-size: 0.9em; margin-top: 20px; color: #e0e7ff;">
+                *Note: This section details the technical event 'Technotsav 2025' and is distinct from standard industrial visits.*
+            </p>
+
+            <a href="#bathukamma-section" class="back-btn">View Bathukamma Sambarlu ↓</a>
+        </div>
+    </section>
+
+    <section class="content-section" id="bathukamma-section" style="flex-direction: row-reverse;">
+        <div class="text-section">
+            <h2>BATHUKAMMA SAMBARALU</h2>
+            <p>
+                The Sankranthi Sambarlu was celebrated on 21th september 2025 in INDU (A). The day has been observed as festival look. The Chairman Sri R. Venkat Rao has introduced this tradition in the campus for the first time. The bathukamma festival of India celebrated in our college with fervor on 21th september 2025.
+                This cultural event promotes unity and traditional values among the student body.
+            </p>
+            <p>
+                Each department organized bathukamma and rangoli competitions. With traditional attire, students enjoyed the whole day. Prizes were awarded for the best rangoli and winners of other competitions like folk dances and etc. The Management, Principal, all teaching, non-teaching staff & students happily participated in Bathukamma Sambarlu-2025, making it a memorable community celebration.
+            </p>
+            <p style="font-size: 0.9em; margin-top: 20px; color: #e0e7ff;">
+                *Note: The poster image references "Sankranthi Sambarlu" on 21th september 2025, while the text details the "Bathukamma Sambarlu" held on 21th september 2025. The description focuses on the 2025 event.*
+            </p>
+
+            <a href="#engineers-day-section" class="back-btn">View Engineer's Day Celebrations ↓</a>
+        </div>
+        <div class="image-section">
+            <img src="./WhatsApp Image 2025-10-17 at 13.29.11_edd46db6.jpg" alt="Bathukamma Sambarlu" class="event-image">
+        </div>
+    </section>
+
+    <section class="content-section" id="engineers-day-section">
+        <div class="image-section">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBbQDAG0ToBX32jzspeAodCjNaX0lMjqjI6g&s" alt="Engineer's Day Celebrations" class="event-image">
+        </div>
+        <div class="text-section">
+            <h2>ENGINEER'S DAY CELEBRATIONS</h2>
+            <p>
+                National Engineers' Day is a special occasion celebrated India on 15th September each year. It is a day dedicated to recognizing and celebrating the remarkable contributions of engineers across various fields. The celebrations often include technical talks, workshops, and student competitions.
+            </p>
+            <p>
+                Engineers are hailed for their spirit of innovation, problem-solving abilities, and their pivotal role in shaping the world as we know it. This day holds immense significance as it commemorates the birth anniversary of one of India's greatest engineers and visionaries, Sir Mokshagundam Visvesvaraya, who made monumental contributions to irrigation and flood control.
+            </p>
+            <p style="font-size: 0.9em; margin-top: 20px; color: #e0e7ff;">
+                *Information based on the image dated Volume - 11 | Issue - 1 | December - 2020.*
+            </p>
+
+            <a href="#yoga-day-section" class="back-btn">View Yoga Day ↓</a>
+        </div>
+    </section>
+
+    <section class="content-section" id="yoga-day-section" style="flex-direction: row-reverse;">
+        <div class="text-section">
+            <h2>YOGA DAY</h2>
+            <p>
+                Yoga Day was observed on 21st June 2020. Yoga is India's ancient tradition and is more than just a physical activity; it's a spiritual discipline focusing on bringing harmony between mind and body. The word 'Yoga' derives from the Sanskrit root 'Yuj,' meaning 'to join' or 'to unite,' symbolizing the integration of one's whole being.
+            </p>
+            <p>
+                The proven benefits of yoga include increased flexibility, fitness, mindfulness, and relaxation. Chairman Sri R. Venkat Rao encouraged everyone to celebrate International Yoga Day to become more active, make healthier choices, and follow lifestyle patterns that foster good health. The NSS Coordinator also explained the importance of yoga and demonstrated various postures to the students and staff.
+            </p>
+            <p style="font-size: 0.9em; margin-top: 20px; color: #e0e7ff;">
+                *Yoga is an invaluable gift of India’s ancient tradition, embodying unity of mind and body, thought and action, and a holistic approach to health and well-being.*
+            </p>
+
+            <a href="#graduation-day-section" class="back-btn">View Graduation Day ↓</a>
+        </div>
+        <div class="image-section">
+            <img src="https://drvirendrasingh.com/wp-content/uploads/2023/06/International-Yoga-Day-2023-scaled.jpg" alt="Yoga Day Celebration" class="event-image">
+        </div>
+    </section>
+
+    <section class="content-section" id="graduation-day-section">
+        <div class="image-section">
+            <img src="./Screenshot 2025-10-17 134334.png" alt="Graduation Day Celebrations" class="event-image">
+        </div>
+        <div class="text-section">
+            <h2>GRADUATION DAY</h2>
+            <p>
+                Graduation Day commemorates the special moment after four years of hard work, sweat, tears, and ramen. The tedious process involves finding the right quote and celebrating with the perfect words that define who you are and set the tone for the future, recognizing the significant achievement of completing their studies.
+            </p>
+            <p>
+                The celebration is a time to don your hard-earned graduation robes, decorate your cap, and watch your favorite graduation movies. Whether preparing for the 2025 graduation season or just looking for the perfect "fit," the day is about celebrating your journey and finding the right motto for your captions.
+            </p>
+            <p>
+                The 2025 graduation season has arrived—and there’s so much to prep for. Whether you’re looking for the perfect fit (dresses! pant suits!), design inspo for your cap, the perfect gift for the special grad in your life, or advice for the future, the day marks the transition to professional life.
+            </p>
+
+            <a href="#top" class="back-btn">↑ Back to Top</a>
+        </div>
+    </section>
+
+    <footer>
+        © 2025 Sri Indu College of Engineering & Technology | IT Department
+    </footer>
+
+</body>
+</html>
